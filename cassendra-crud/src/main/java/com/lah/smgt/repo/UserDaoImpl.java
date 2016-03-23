@@ -1,5 +1,11 @@
 package com.lah.smgt.repo;
 
+/*
+ * @   Developed by LahiruA 22/03/2016
+ * @   Data persistence
+ * 
+ * */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +32,13 @@ public class UserDaoImpl implements UserDao {
 	CassandraCofig cassandraCofig;
 
 	private Session session;
+	
 
+	/*
+	 * get All records
+	 * @see com.lah.smgt.repo.UserDao#getAllStudent()
+	 * 
+	 */
 	@Override
 	public ResponseObject getAllStudent() {
 		ResponseObject resObj = new ResponseObject();
@@ -75,6 +87,12 @@ public class UserDaoImpl implements UserDao {
 		return resObj;
 	}
 
+	
+	/*
+	 * get specific record
+	 * @see com.lah.smgt.repo.UserDao#getStudent(int)
+	 * 
+	 */
 	@Override
 	public ResponseObject getStudent(int id) {
 		ResponseObject resObj = new ResponseObject();
@@ -108,7 +126,12 @@ public class UserDaoImpl implements UserDao {
 		}
 		return resObj;
 	}
+	
 
+	/*
+	 * find user
+	 * 
+	 */
 	private List<User> findUser(int id, List<User> userList) throws Exception {
 		ResultSet result = null;
 		session = cassandraCofig.session();
@@ -125,6 +148,12 @@ public class UserDaoImpl implements UserDao {
 		return userList;
 	}
 
+	
+	/*
+	 * save user record
+	 * @see com.lah.smgt.repo.UserDao#saveStudent(com.lah.smgt.domain.User)
+	 * 
+	 */
 	@Override
 	public ResponseObject saveStudent(User user) {
 		//validateStudent(User user) -- validation need to check
@@ -167,6 +196,12 @@ public class UserDaoImpl implements UserDao {
 		return resObj;
 	}
 
+	
+	/*
+	 * update existing user record
+	 * @see com.lah.smgt.repo.UserDao#updateStudent(int, com.lah.smgt.domain.User)
+	 * 
+	 */
 	@Override
 	public ResponseObject updateStudent(int id, User user) {
 		//validateStudent(User user) -- validation need to check
@@ -209,6 +244,12 @@ public class UserDaoImpl implements UserDao {
 		return resObj;
 	}
 
+	
+	/*
+	 * remove record from db
+	 * @see com.lah.smgt.repo.UserDao#removeStudent(int)
+	 * 
+	 */
 	@Override
 	public ResponseObject removeStudent(int id) {
 		ResponseObject resObj = new ResponseObject();
@@ -249,6 +290,12 @@ public class UserDaoImpl implements UserDao {
 		return resObj;
 	}
 
+	
+	/*
+	 * all user validations need to implement here
+	 * @see com.lah.smgt.repo.UserDao#validateStudent(com.lah.smgt.domain.User)
+	 * 
+	 */
 	@Override
 	public ResponseObject validateStudent(User user) {
 		ResponseObject resObj = new ResponseObject();
